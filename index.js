@@ -1,5 +1,8 @@
 require("dotenv").config();
+require("express-async-errors");
 
+const passport = require("passport");
+const session = require("express-session");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");

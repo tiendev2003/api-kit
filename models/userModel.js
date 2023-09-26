@@ -5,8 +5,8 @@ const userSchema = mongoose.Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true },
-    password: { type: String, required: true },
-    uuid: { type: String, required: true },
+    password: { type: String, required: true, min: 6 },
+    uuid: { type: String },
     description: { type: String },
     phone: { type: String },
     address: { type: String },
@@ -16,8 +16,28 @@ const userSchema = mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["ROLE_USER", "ROLE_ADMIN"],
-      default: "ROLE_USER",
+      enum: ["admin", "client"],
+      default: "client",
+    },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+    verifiedDate: {
+      type: Date,
+      default: null,
+    },
+    verificationToken: {
+      type: String,
+      default: null,
+    },
+    passwordToken: {
+      type: String,
+      default: null,
+    },
+    passwordTokenExpire: {
+      type: Date,
+      default: null,
     },
   },
   {
@@ -33,7 +53,7 @@ const userSchema = mongoose.Schema(
 );
 
 // Create a user model using schema
-const User = mongoose.model("user", userSchema);
+const User = mongoose.model("User", userSchema);
 
 // Export the User model
 module.exports = { User };

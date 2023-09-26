@@ -1,4 +1,0 @@
-Route Visited: /register | Method: POST | ResponseTime: 398 ms
-Route Visited: /register | Method: POST | ResponseTime: 319 ms
-Route Visited: /register | Method: POST | ResponseTime: 807 ms
-Route Visited: /login | Method: POST | ResponseTime: 327 ms
