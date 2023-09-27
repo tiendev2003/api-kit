@@ -8,7 +8,7 @@ const {
   forgotPassword,
   resetPassword,
 } = require("../controllers/auth.ctrl");
-const { authenticateUser } = require("../middleware/authentication");
+ const { authenticateUser } = require("../middleware/authentication");
 const { attachCookiesToResponse } = require("../utils/jwt");
 const { StatusCodes } = require("http-status-codes");
 const { createString } = require("../utils/crypto");
@@ -20,19 +20,20 @@ router.post("/verify-email", verifyEmail);
 router.post("/forgot-password", forgotPassword);
 router.post("/reset-password", resetPassword);
 
-router.get("/login/success", (req, res) => {
+
+router.get("/login/success",authenticateUser, (req, res) => {
   let refreshToken = createString();
   attachCookiesToResponse(
     res,
     {
-      userId: req.user.id,
+      userId: req.user.userId,
       email: req.user.email,
       role: req.user.role,
     },
     refreshToken
   );
   let userShow = {
-    id: req.user.id,
+    id: req.user.userId,
     name: req.user.name,
     email: req.user.email,
     role: req.user.role,

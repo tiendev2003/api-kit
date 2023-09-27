@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // Define the User Schema
-const tokenSchema = mongoose.Schema(
+const tokenSchema =new  mongoose.Schema(
   {
     ip: { type: String },
     userAgent: { type: String, default: null },
@@ -33,7 +33,7 @@ const tokenSchema = mongoose.Schema(
 );
 
 // Create a user model using schema
-const Token = mongoose.model("Token", tokenSchema);
+const TokenUser = mongoose.model("Token", tokenSchema);
 
 // Export the User model
-module.exports = { Token };
+module.exports = { TokenUser };

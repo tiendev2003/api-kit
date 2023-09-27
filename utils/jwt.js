@@ -6,7 +6,7 @@ const createJWT = (payload) => {
       data: payload,
     },
     process.env.JWT_SECRET,
-    { expiresIn: process.env.JWT_LIFETIME }
+    { expiresIn: "28d" }
   );
 };
 
